@@ -28,7 +28,7 @@ namespace MathForGames
             base(icon, x, y, color, name)
         {
             _speed = speed;
-            _target = target;   
+            _target = target;           
         }
 
         public override void Update(float deltaTime)
@@ -60,6 +60,9 @@ namespace MathForGames
         public override void OnCollision(Actor actor)
         {
             Console.WriteLine("Collision occurred");
+
+            //if (actor is Bullet)
+            //    Engine.CloseApplication();
         }
     }
 }

@@ -46,7 +46,9 @@ namespace MathForGames
             int yBulletDirection = -Convert.ToInt32(Raylib.IsKeyDown(KeyboardKey.KEY_UP))
                 + Convert.ToInt32(Raylib.IsKeyDown(KeyboardKey.KEY_DOWN));
 
-            Bullet bullet = new Bullet('.', Position.X, Position.Y, 1, xBulletDirection, yBulletDirection, Color.GREEN, "Bullet");
+            //Bullet's values
+            Bullet bullet = new Bullet('.', Position.X, Position.Y, 150, xBulletDirection, yBulletDirection, Color.GREEN, "Bullet");
+            bullet.CollisionRadius = 15;
 
             if (xBulletDirection != 0 || yBulletDirection != 0)
                 _scene.AddActor(bullet);

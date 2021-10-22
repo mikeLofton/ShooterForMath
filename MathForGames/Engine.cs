@@ -64,12 +64,12 @@ namespace MathForGames
             
             Player player = new Player('@', 400, 225, 100, Color.DARKPURPLE, scene, "Player");
             player.CollisionRadius = 15;
-            Enemy enemy1 = new Enemy('E', 5, 5, 1, player, Color.RED, "Enemy1");
+            Enemy enemy1 = new Enemy('E', 5, 5, 1, player, Color.RED,"Enemy1");
             enemy1.CollisionRadius = 15;
             Enemy enemy2 = new Enemy('E', 400, 400, 1, player, Color.RED, "Enemy2");
             enemy2.CollisionRadius = 15;
             Enemy enemy3 = new Enemy('E', 5, 400, 1, player, Color.RED, "Enemy3");
-            enemy2.CollisionRadius = 15;
+            enemy3.CollisionRadius = 15;
 
             scene.AddActor(player);
             scene.AddActor(enemy1);
