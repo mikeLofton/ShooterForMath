@@ -11,7 +11,6 @@ namespace MathForGames
         private float _speed;
         private Vector2 _velocity;
         private Actor _target;
-        private float _maxViewAngle;
 
         public float Speed
         {

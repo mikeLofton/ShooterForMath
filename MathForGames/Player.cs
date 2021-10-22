@@ -10,6 +10,7 @@ namespace MathForGames
     {
         private float _speed;
         private Vector2 _velocity;
+        private Scene _scene;
 
         public float Speed
         {
@@ -23,10 +24,11 @@ namespace MathForGames
             set { _velocity = value; }
         }
 
-        public Player(char icon, float x, float y, float speed, Color color, string name = "Actor") : 
+        public Player(char icon, float x, float y, float speed, Color color, Scene currentScene, string name = "Actor") : 
             base(icon, x, y, color, name)
         {
             _speed = speed;
+            _scene = currentScene;
         }
 
         public override void Update(float deltaTime)
@@ -37,6 +39,17 @@ namespace MathForGames
 
             int yDirection = -Convert.ToInt32(Raylib.IsKeyDown(KeyboardKey.KEY_W))
                 + Convert.ToInt32(Raylib.IsKeyDown(KeyboardKey.KEY_S));
+
+            int xBulletDirection = -Convert.ToInt32(Raylib.IsKeyDown(KeyboardKey.KEY_LEFT))
+                + Convert.ToInt32(Raylib.IsKeyDown(KeyboardKey.KEY_RIGHT));
+
+            int yBulletDirection = -Convert.ToInt32(Raylib.IsKeyDown(KeyboardKey.KEY_UP))
+                + Convert.ToInt32(Raylib.IsKeyDown(KeyboardKey.KEY_DOWN));
+
+            Bullet bullet = new Bullet('.', Position.X, Position.Y, 1, xBulletDirection, yBulletDirection, Color.GREEN, "Bullet");
+
+            if (xBulletDirection != 0 || yBulletDirection != 0)
+                _scene.AddActor(bullet);
 
             //Create a vector that stores the move input
             Vector2 moveDirection = new Vector2(xDirection, yDirection);

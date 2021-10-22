@@ -62,7 +62,7 @@ namespace MathForGames
 
             Scene scene = new Scene();
             
-            Player player = new Player('@', 400, 225, 100, Color.DARKPURPLE, "Player");
+            Player player = new Player('@', 400, 225, 100, Color.DARKPURPLE, scene, "Player");
             player.CollisionRadius = 15;
             Enemy enemy1 = new Enemy('E', 5, 5, 1, player, Color.RED, "Enemy1");
             enemy1.CollisionRadius = 15;
