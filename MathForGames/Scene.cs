@@ -42,6 +42,9 @@ namespace MathForGames
 
                 _actors[i].Update(deltaTime);
 
+                //if (i > _actors.Length)
+                //    i--;
+
                 //Check for collision
                 for (int j = 0; j < _actors.Length; j++)
                 {

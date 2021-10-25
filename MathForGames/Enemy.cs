@@ -60,9 +60,12 @@ namespace MathForGames
         public override void OnCollision(Actor actor)
         {
             Console.WriteLine("Collision occurred");
+        }
 
-            //if (actor is Bullet)
-            //    Engine.CloseApplication();
+        public override void Draw()
+        {
+            base.Draw();
+            Collider.Draw();
         }
     }
 }

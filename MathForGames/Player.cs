@@ -47,8 +47,9 @@ namespace MathForGames
                 + Convert.ToInt32(Raylib.IsKeyDown(KeyboardKey.KEY_DOWN));
 
             //Bullet's values
-            Bullet bullet = new Bullet('.', Position.X, Position.Y, 150, xBulletDirection, yBulletDirection, Color.GREEN, "Bullet");
-            bullet.CollisionRadius = 15;
+            Bullet bullet = new Bullet('.', Position.X, Position.Y, 150, xBulletDirection, yBulletDirection, _scene, Color.GREEN, "Bullet");
+            CircleCollider bulletCircleCollider = new CircleCollider(15, bullet);
+            bullet.Collider = bulletCircleCollider;
 
             if (xBulletDirection != 0 || yBulletDirection != 0)
                 _scene.AddActor(bullet);
@@ -64,9 +65,15 @@ namespace MathForGames
         }
 
         public override void OnCollision(Actor actor)
-        {
+        {       
             if (actor is Enemy)
                 Engine.CloseApplication();
+        }
+
+        public override void Draw()
+        {
+            base.Draw();
+            Collider.Draw();
         }
     }
 }
