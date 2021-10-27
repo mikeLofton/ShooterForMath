@@ -43,6 +43,8 @@ namespace MathForGames
 
             Position += Velocity;
 
+            //float distance = Vector2.Distance()
+
             base.Update(deltaTime);
         }
 
