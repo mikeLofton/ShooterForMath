@@ -24,8 +24,8 @@ namespace MathForGames
             set { _velocity = value; }
         }
 
-        public Player(char icon, float x, float y, float speed, Color color, Scene currentScene, string name = "Actor") : 
-            base(icon, x, y, color, name)
+        public Player(float x, float y, float speed, Scene currentScene, string name = "Actor", string path = "") : 
+            base(x, y, name, path)
         {
             _speed = speed;
             _scene = currentScene;
@@ -47,7 +47,8 @@ namespace MathForGames
                 + Convert.ToInt32(Raylib.IsKeyDown(KeyboardKey.KEY_DOWN));
 
             //Bullet's values
-            Bullet bullet = new Bullet('.', Position.X, Position.Y, 150, xBulletDirection, yBulletDirection, _scene, Color.GREEN, "Bullet");
+            Bullet bullet = new Bullet(Position.X, Position.Y, 150, xBulletDirection, yBulletDirection, _scene, "Bullet", "bullet.png");
+            bullet.SetScale(50, 50);
             CircleCollider bulletCircleCollider = new CircleCollider(15, bullet);
             bullet.Collider = bulletCircleCollider;
 

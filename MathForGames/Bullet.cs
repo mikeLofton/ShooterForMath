@@ -26,8 +26,8 @@ namespace MathForGames
             set { _velocity = value; }
         }
 
-        public Bullet(char icon, float x, float y, float speed, int bulletXDirection, int bulletYDirection, Scene currentScene, Color color, string name = "Bullet") :
-            base(icon, x, y, color, name)
+        public Bullet(float x, float y, float speed, int bulletXDirection, int bulletYDirection, Scene currentScene, string name = "Bullet", string path = "") :
+            base(x, y, name, path)
         {
             _speed = speed;
             _xDirection = bulletXDirection;

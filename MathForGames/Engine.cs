@@ -62,19 +62,23 @@ namespace MathForGames
 
             Scene scene = new Scene();
             
-            Player player = new Player('@', 400, 225, 100, Color.DARKPURPLE, scene, "Player");
+            Player player = new Player(400, 225, 100, scene, "Player", "player.png");
+            player.SetScale(50, 50);
             AABBCollider playerBoxCollider = new AABBCollider(30, 30, player);
             player.Collider = playerBoxCollider;
 
-            Enemy enemy1 = new Enemy('E', 5, 5, 1, player, Color.RED,"Enemy1");
+            Enemy enemy1 = new Enemy(5, 5, 1, player,"Enemy1", "enemy.png");
+            enemy1.SetScale(50, 50);
             AABBCollider enemy1BoxCollider = new AABBCollider(30, 30, enemy1);
             enemy1.Collider = enemy1BoxCollider;
 
-            Enemy enemy2 = new Enemy('E', 400, 400, 1, player, Color.RED, "Enemy2");
+            Enemy enemy2 = new Enemy(400, 400, 1, player, "Enemy2", "enemy.png");
+            enemy2.SetScale(50, 50);
             AABBCollider enemy2BoxCollider = new AABBCollider(30, 30, enemy2);
             enemy2.Collider = enemy2BoxCollider;
 
-            Enemy enemy3 = new Enemy('E', 5, 400, 1, player, Color.RED, "Enemy3");
+            Enemy enemy3 = new Enemy(5, 400, 1, player, "Enemy3", "enemy.png");
+            enemy3.SetScale(50, 50);
             AABBCollider enemy3BoxCollider = new AABBCollider(30, 30, enemy3);
             enemy3.Collider = enemy3BoxCollider;
 
