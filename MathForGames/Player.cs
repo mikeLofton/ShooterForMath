@@ -11,6 +11,8 @@ namespace MathForGames
         private float _speed;
         private Vector2 _velocity;
         private Scene _scene;
+        private float _cooldownTime = 0.5f;
+        private float _sinceLastShot = 0;
 
         public float Speed
         {
@@ -33,6 +35,8 @@ namespace MathForGames
 
         public override void Update(float deltaTime)
         {
+            _sinceLastShot += deltaTime;
+
             //Get the player input direction
             int xDirection = -Convert.ToInt32(Raylib.IsKeyDown(KeyboardKey.KEY_A))
                 + Convert.ToInt32(Raylib.IsKeyDown(KeyboardKey.KEY_D));
@@ -45,15 +49,21 @@ namespace MathForGames
 
             int yBulletDirection = -Convert.ToInt32(Raylib.IsKeyDown(KeyboardKey.KEY_UP))
                 + Convert.ToInt32(Raylib.IsKeyDown(KeyboardKey.KEY_DOWN));
+            
+                //Bullet's values
+                Bullet bullet = new Bullet(Position.X, Position.Y, 150, xBulletDirection, yBulletDirection, _scene, "Bullet", "Images/bullet.png");
+                bullet.SetScale(50, 50);
+                CircleCollider bulletCircleCollider = new CircleCollider(15, bullet);
+                bullet.Collider = bulletCircleCollider;
 
-            //Bullet's values
-            Bullet bullet = new Bullet(Position.X, Position.Y, 150, xBulletDirection, yBulletDirection, _scene, "Bullet", "bullet.png");
-            bullet.SetScale(50, 50);
-            CircleCollider bulletCircleCollider = new CircleCollider(15, bullet);
-            bullet.Collider = bulletCircleCollider;
-
-            if (xBulletDirection != 0 || yBulletDirection != 0)
-                _scene.AddActor(bullet);
+            if (_sinceLastShot > _cooldownTime)
+            {
+                if (xBulletDirection != 0 || yBulletDirection != 0)
+                {
+                    _scene.AddActor(bullet);
+                    _sinceLastShot = 0;
+                }
+            }
 
             //Create a vector that stores the move input
             Vector2 moveDirection = new Vector2(xDirection, yDirection);
